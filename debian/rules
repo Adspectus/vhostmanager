@@ -11,5 +11,5 @@ MANDIR=source/man
 	dh $@
 
 override_dh_auto_build:
-	for prg in vhostmanager.1;do xsltproc ${XSLOPT} -o ${MANDIR}/ ${XSL} ${MANDIR}/$$prg.xml;done
+	for prg in vhostmanager.1 vhostenconf.1 vhostdisconf.1 vhostensite.1 vhostdissite.1 vhostquery.1;do xsltproc ${XSLOPT} -o ${MANDIR}/ ${XSL} ${MANDIR}/$$prg.xml;done
 	dh_auto_build
