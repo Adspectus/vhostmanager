@@ -1,1 +1,6 @@
 /source/man/vhostmanager.1
+/source/man/vhostenconf.1
+/source/man/vhostdisconf.1
+/source/man/vhostensite.1
+/source/man/vhostdissite.1
+/source/man/vhostquery.1

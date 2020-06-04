@@ -7,7 +7,7 @@ Standards-Version: 4.1.2
 
 Package: vhostmanager
 Architecture: all
-Depends: apache2, coreutils (>= 8.26-3), ${misc:Depends}
-Description: Apache2 configuration for user specific configuration
+Depends: apache2, coreutils (>= 8.26-3), ${perl:Depends}, ${misc:Depends}
+Description: User specific apache2 configuration
  Various apache2 configuration files to implement user specific apache2
  configuration.

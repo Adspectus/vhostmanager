@@ -20,7 +20,7 @@ set -e
 
 case "$1" in
     configure)
-      a2conf=/usr/share/vhostmanager/examples/vhostmanage.conf
+      a2conf=/usr/share/vhostmanager/examples/vhostmanager.conf
       if [ -f $a2conf ];then
         ip=$(hostname -I)
         domain=$(dnsdomainname)
