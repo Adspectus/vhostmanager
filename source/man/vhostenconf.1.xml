@@ -5,9 +5,9 @@
   <!ENTITY dhusername  "&dhfirstname; &dhsurname;">
   <!ENTITY dhemail     "adspectus@fastmail.com">
   <!ENTITY dhsection   "1">
-  <!ENTITY dhtitle     "vhostmanager User Manual">
-  <!ENTITY dhucpackage "Vhostmanager">
-  <!ENTITY dhpackage   "vhostmanager">
+  <!ENTITY dhtitle     "vhostenconf User Manual">
+  <!ENTITY dhucpackage "Vhostenconf">
+  <!ENTITY dhpackage   "vhostenconf">
 ]>
 
 <refentry>
