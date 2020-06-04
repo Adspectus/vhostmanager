@@ -1,0 +1,11 @@
+/usr/share/vhostmanager/vhostmanage.pl /usr/bin/vhostmanage
+/usr/share/vhostmanager/vhostmanage.pl /usr/bin/vhostenconf
+/usr/share/vhostmanager/vhostmanage.pl /usr/bin/vhostdisconf
+/usr/share/vhostmanager/vhostmanage.pl /usr/bin/vhostensite
+/usr/share/vhostmanager/vhostmanage.pl /usr/bin/vhostdissite
+/usr/share/bash-completion/completions/vhostmanager /usr/share/bash-completion/completions/vhostmanage
+/usr/share/bash-completion/completions/vhostmanager /usr/share/bash-completion/completions/vhostenconf
+/usr/share/bash-completion/completions/vhostmanager /usr/share/bash-completion/completions/vhostdisconf
+/usr/share/bash-completion/completions/vhostmanager /usr/share/bash-completion/completions/vhostensite
+/usr/share/bash-completion/completions/vhostmanager /usr/share/bash-completion/completions/vhostdissite
+

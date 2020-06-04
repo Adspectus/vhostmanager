@@ -1,0 +1,4 @@
+/source/etc/vhostmanager /usr/share/bash-completion/completions
+/source/bin/vhostmanage.pl /usr/share/vhostmanager
+/source/etc/a2conf/vhostmanager.conf /etc/apache2/conf-available
+/source/etc/a2site/vhostmanager.conf /etc/apache2/sites-available

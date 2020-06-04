@@ -21,6 +21,11 @@ set -e
 
 case "$1" in
     purge|remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+      if [ -e /usr/share/apache2/apache2-maintscript-helper ]; then
+        . /usr/share/apache2/apache2-maintscript-helper
+        apache2_invoke disconf vhostmanager.conf || exit $?
+        apache2_invoke dissite vhostmanager.conf || exit $?
+      fi
     ;;
 
     *)

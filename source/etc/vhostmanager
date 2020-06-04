@@ -1,0 +1,39 @@
+## File: /usr/share/bash-completion/completions/vhostmanager
+## Bash completion for vhostmanager
+
+_vhost_allcomp() {
+  CONFS=$(ls $HOME/apache2/$1 2>/dev/null)
+  echo ${CONFS//.conf/}
+}
+
+_vhost_sites() {
+  COMPREPLY=( $( compgen -W '$( _vhost_allcomp $1 )' -- $cur  ) )
+}
+
+_vhostensite() {
+  COMPREPLY=()
+  local cur=${COMP_WORDS[COMP_CWORD]}
+  _vhost_sites sites-available
+}
+complete -F _vhostensite vhostensite
+
+_vhostdissite() {
+  COMPREPLY=()
+  local cur=${COMP_WORDS[COMP_CWORD]}
+  _vhost_sites sites-enabled
+}
+complete -F _vhostdissite vhostdissite
+
+_vhostenconf() {
+  COMPREPLY=()
+  local cur=${COMP_WORDS[COMP_CWORD]}
+  _vhost_sites conf-available
+}
+complete -F _vhostenconf vhostenconf
+
+_vhostdisconf() {
+  COMPREPLY=()
+  local cur=${COMP_WORDS[COMP_CWORD]}
+  _vhost_sites conf-enabled
+}
+complete -F _vhostdisconf vhostdisconf

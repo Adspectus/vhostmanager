@@ -20,6 +20,18 @@ set -e
 
 case "$1" in
     configure)
+      a2conf=/usr/share/vhostmanager/examples/vhostmanage.conf
+      if [ -f $a2conf ];then
+        ip=$(hostname -I)
+        domain=$(dnsdomainname)
+        if [ ! -z $ip ];then sed -i -e "s/<IP>/$ip/g" $a2conf;fi
+        if [ ! -z $domain ];then sed -i -e "s/<DOMAIN>/$domain/g" $a2conf;fi
+      fi
+      if [ -e /usr/share/apache2/apache2-maintscript-helper ]; then
+        . /usr/share/apache2/apache2-maintscript-helper
+        apache2_invoke enconf vhostmanager.conf || exit $?
+        apache2_invoke ensite vhostmanager.conf || exit $?
+      fi
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
