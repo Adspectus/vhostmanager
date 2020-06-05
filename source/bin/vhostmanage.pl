@@ -1,7 +1,6 @@
 #!/usr/bin/perl -w
 #
-# VHostManage by Uwe Gehring <uwe@imap.cc>
-# is based upon
+# vhostmanage by Uwe Gehring <adspectus@fastmail.com> is based upon
 #
 # a2enmod by Stefan Fritsch <sf@debian.org>
 # Licensed under Apache License 2.0
@@ -17,19 +16,21 @@ no if $] >= 5.017011, warnings => 'experimental::smartmatch';
 
 
 my $basename       = basename($0);
-$basename          =~ /^VHost(Manage|Enable|Disable)((?:-.+)?)$/ or die "$basename call name unknown\n";
-my $act            = $1;
-my $obj            = "site";
+$basename          =~ /^vhost(en|dis)(site|conf)((?:-.+)?)$/ or die "$basename call name unknown\n";
+my $act            = $1 . 'able';
+my $obj            = $2;
+my $confdir        = $ENV{HOME}."/apache2";
 my $name           = ucfirst($obj);
-my $dir            = 'sites';
 my $sffx           = '.conf';
-my $confdir        = "/home/uwe/.apache2";
-my $availdir       = "$confdir/$dir-available";
-my $enabldir       = "$confdir/$dir-enabled";
-my $choicedir      = $act eq 'Enable' ? $availdir : $enabldir;
-my $linkdir        = File::Spec->abs2rel( $availdir, $enabldir );
+my $reload         = 'reload';
 my $request_reload = 0;
 my $rc             = 0;
+my $dir            = $obj;
+$dir = 'sites' if ($obj eq 'site')
+my $availdir       = "$confdir/$dir-available";
+my $enabldir       = "$confdir/$dir-enabled";
+my $choicedir      = $act eq 'enable' ? $availdir : $enabldir;
+my $linkdir        = File::Spec->abs2rel( $availdir, $enabldir );
 
 if ( !scalar @ARGV ) {
   my @choices = myglob('*');
@@ -89,7 +90,7 @@ sub doit {
 
   if ( !-e $tgt ) {
     if ( -l $link && !-e $link ) {
-      if ( $act eq 'Disable' ) {
+      if ( $act eq 'disable' ) {
         info("removing dangling symlink $link\n");
         unlink($link);
 
@@ -112,7 +113,7 @@ sub doit {
     return 0;
   }
 
-  if ( $act eq 'Enable' ) {
+  if ( $act eq 'enable' ) {
     my $check = check_link( $tgt, $link );
     if ( $check eq 'ok' ) {
       if ($conflink) {
