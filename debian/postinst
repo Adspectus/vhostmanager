@@ -20,12 +20,12 @@ set -e
 
 case "$1" in
     configure)
-      a2conf=/usr/share/vhostmanager/examples/vhostmanager.conf
+      a2conf=/usr/share/doc/vhostmanager/examples/vhostmanager.conf
       if [ -f $a2conf ];then
         ip=$(hostname -I)
         domain=$(dnsdomainname)
-        if [ ! -z $ip ];then sed -i -e "s/<IP>/$ip/g" $a2conf;fi
-        if [ ! -z $domain ];then sed -i -e "s/<DOMAIN>/$domain/g" $a2conf;fi
+        if [ ! -z "$ip" ];then sed -i -e "s/<IP>/$ip/g" $a2conf;fi
+        if [ ! -z "$domain" ];then sed -i -e "s/<DOMAIN>/$domain/g" $a2conf;fi
       fi
       if [ -e /usr/share/apache2/apache2-maintscript-helper ]; then
         . /usr/share/apache2/apache2-maintscript-helper
