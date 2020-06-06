@@ -2,20 +2,91 @@
 #
 # vhostmanage by Uwe Gehring <adspectus@fastmail.com> is based upon:
 # a2enmod by Stefan Fritsch <sf@debian.org>
-# Licensed under Apache License 2.0
 #
 
 use strict;
 use Cwd 'realpath';
 use File::Spec;
 use File::Basename;
-use File::Path;
 use 5.014;
-no if $] >= 5.017011, warnings => 'experimental::smartmatch';
 
 =head1 NAME
 
-vhostquery - retrieve user specific runtime configuration from a local Apache 2 HTTP server
+vhostenconf, vhostdisconf - enable or disable a user specific apache2 configuration
+
+vhostensite, vhostdissite - enable or disable a user specific apache2 site/virtual host
+
+=head1 SYNOPSIS
+
+B<vhostenconf>  [I<CONF>]
+
+B<vhostdisconf>  [I<CONF>]
+
+B<vhostensite>  [I<SITE>]
+
+B<vhostdissite>  [I<SITE>]
+
+=head1 DESCRIPTION
+
+B<vhostenconf>, B<vhostdisconf>, B<vhostensite>, and B<vhostdissite> are programs designed to enable or disable user specific apache2 configurations or user specific apache2 sites (which contains a <VirtualHost> block).
+
+The B<vhosten*> programs do this by creating symlinks within F<$HOME/apache2/{conf,sites}-enabled> directories to the real files in F<$HOME/apache2/{conf,sites}-available> directories. Likewise, the B<vhostdis*> programs remove those symlinks.
+
+It  is  not  an  error to enable a conf or site which is already enabled, or to disable one which is already disabled.
+
+Thus, the meaning of these programs are much the same as their L<a2enconf(1)>, L<a2disconf(1)>, L<a2ensite(1)>, L<a2dissite(1)> counterparts from the apache2 package, except that they do their work in F<$HOME/apache2> instead of F</etc/apache2>. There is no B<vhostenmod> and B<vhostdismod> program, as it would not make sense for a user to enable or disable apache2 modules.
+
+=head1 OPTIONS
+
+=over 4
+
+=item [I<CONF>]
+
+Enables or disables the configuration I<CONF>.
+
+=item [I<SITE>]
+
+Enables or disables the site I<SITE>.
+
+=back
+
+If no configuration or site was given, all programs show the possible configuration(s) or site(s) to enable or disable. You can also use the <TAB> completion feature by the shell.
+
+=head1 ENVIRONMENT
+
+B<vhostenconf>, B<vhostdisconf>, B<vhostensite>, and B<vhostdissite> require the user specific apache2 base directory to be F<$HOME/apache2>.
+
+=begin comment
+
+ However, if this does not reflect your setup, you can configure your personal apache2 directory with an environment variable named B<APACHE2USERDIR>, which is always relative to $HOME, i.e. if you put this in your .bashrc:
+
+  export APACHE2USERDIR="some/dir"
+
+your apache2 base directory is F<$HOME/some/dir>
+
+=end comment
+
+Note that the structure beneath this directory must always include the subdirectories F<conf-available>, F<conf-enabled>, F<sites-available>, and F<sites-enabled>.
+
+=head1 FILES
+
+There is only one perl script named F<vhostmanage.pl> in F</usr/share/vhostmanager> directory to which the programs B<vhostenconf>, B<vhostdisconf>, B<vhostensite>, and B<vhostdissite> are symlinked to. This is almost similar to the B<a2*> programs, which are symlinks to the F<a2enmod> perl script.
+
+=head1 BUGS
+
+Currently the user specific apache2 configuration must be located in F<$HOME/apache2>.
+
+=head1 SEE ALSO
+
+L<a2enconf(1)>, L<a2disconf(1)>, L<a2ensite(1)>, and L<a2dissite(1)>
+
+=head1 AUTHOR
+
+F<vhostmanage.pl> and this documentation was written by Uwe Gehring (adspectus@fastmailcom) based upon F<a2enmod> and the manual by Stefan Fritsch <sf@debian.org>.
+
+=head1 CREDITS
+
+Stefan Fritsch <sf@debian.org> for his L<a2enmod(1)> program.
 
 =cut
 
@@ -24,7 +95,7 @@ my $basename       = basename($0);
 $basename          =~ /^vhost(en|dis)(site|conf)((?:-.+)?)$/ or die "$basename call name unknown\n";
 my $act            = $1 . 'able';
 my $obj            = $2;
-my $confdir        = $ENV{HOME}."/apache2";
+my $confdir        = $ENV{HOME} . "/" . ($ENV{APACHE2USERDIR} || "apache2");
 my $name           = ucfirst($obj);
 my $sffx           = '.conf';
 my $reload         = 'reload';

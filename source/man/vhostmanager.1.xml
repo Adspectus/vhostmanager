@@ -49,7 +49,7 @@
     <title>DESCRIPTION</title>
     <para>This manual page documents briefly the <package>&dhpackage;</package> package.</para>
     <para>The <package>&dhpackage;</package> package is a collection of configuration files and scripts to enable a user specific apache2 configuration.</para>
-    <para>It provides the optional inclusion of apache configurations and virtual host definitions from directories in $HOME/apache2. Furthermore it provides scripts to manage these configuration files in a similar way like the standard tools provided by the <package>apache2</package> package.</para>
+    <para>It provides the optional inclusion of apache configurations and virtual host definitions from directories in <filename>$HOME/apache2</filename>. Furthermore it provides scripts to manage these configuration files in a similar way like the standard tools provided by the <package>apache2</package> package.</para>
   </refsect1>
 
   <refsect1 id="commands">
@@ -77,7 +77,7 @@
       <varlistentry>
         <term><command>vhostdissite</command></term>
         <listitem>
-          <para>Script to disable a user-specific apache2 virtual host configuration file. See <citerefentry><refentrytitle>kirbyinstall</refentrytitle><manvolnum>1</manvolnum></citerefentry> for further details.</para>
+          <para>Script to disable a user-specific apache2 virtual host configuration file. See <citerefentry><refentrytitle>vhostdissite</refentrytitle><manvolnum>1</manvolnum></citerefentry> for further details.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -95,7 +95,7 @@
       <varlistentry>
         <term><filename>/etc/apache2/conf-available/vhostmanager.conf</filename></term>
         <listitem>
-          <para>The system-wide apache2 configuration file which enables user-specific configuration files.</para>
+          <para>The system-wide apache2 configuration file which enables user-specific configuration files and opens a user specific virtual host root folder for apache2.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -105,9 +105,15 @@
         </listitem>
       </varlistentry>
       <varlistentry>
-        <term><filename>/usr/share/vhostmanager/examples/vhostmanager.conf</filename></term>
+        <term><filename>/usr/share/doc/vhostmanager/examples/envvars</filename></term>
         <listitem>
-          <para>An example configuration file to define some useful apache2 environment variables and to open a user specific virtual host root folder for apache2.</para>
+          <para>An example configuration file to define some usefule apache2 settings.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><filename>/usr/share/doc/vhostmanager/examples/vhostmanager.conf</filename></term>
+        <listitem>
+          <para>An example configuration file to define some useful apache2 environment variables.</para>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -115,7 +121,7 @@
 
   <refsect1 id="bugs">
     <title>BUGS</title>
-    <para>None known so far.</para>
+    <para>Currently the user specific apache2 configuration must be located in <filename>$HOME/apache2</filename>.</para>
   </refsect1>
 
   <refsect1 id="see_also">
