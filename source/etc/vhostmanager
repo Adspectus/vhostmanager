@@ -2,7 +2,8 @@
 ## Bash completion for vhostmanager
 
 _vhost_allcomp() {
-  CONFS=$(ls $HOME/apache2/$1 2>/dev/null)
+  DIR=$HOME/${APACHE2USERDIR:=apache2}
+  CONFS=$(ls $DIR/$1 2>/dev/null)
   echo ${CONFS//.conf/}
 }
 
