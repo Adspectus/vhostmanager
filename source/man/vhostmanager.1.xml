@@ -49,7 +49,7 @@
     <title>DESCRIPTION</title>
     <para>This manual page documents briefly the <package>&dhpackage;</package> package.</para>
     <para>The <package>&dhpackage;</package> package is a collection of configuration files and scripts to enable a user specific apache2 configuration.</para>
-    <para>It provides the optional inclusion of apache configurations and virtual host definitions from directories in $HOME/apache2. Furthermore it provides scripts to manage these configuration files in a similar way like the standard tools provided by the apache2 package.</para>
+    <para>It provides the optional inclusion of apache configurations and virtual host definitions from directories in $HOME/apache2. Furthermore it provides scripts to manage these configuration files in a similar way like the standard tools provided by the <package>apache2</package> package.</para>
   </refsect1>
 
   <refsect1 id="commands">
