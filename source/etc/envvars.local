@@ -1,0 +1,14 @@
+## File: /usr/share/doc/vhostmanager/examples/envvars.local
+## Apache2 additional settings by Uwe Gehring <adspectus@fastmail.com>
+##
+## Copy this file with the necessary changes to /etc/apache2 and source it 
+## at the end of /etc/apache2/envvars with
+## 
+##if [ -f $APACHE_CONFDIR/envvars.local ];then
+##  . $APACHE_CONFDIR/envvars.local
+##fi
+##
+## or put the proposed settings in /etc/apache2/envvars directly.
+
+# Use this if you want apache2 to create files and directories with group write permission
+umask=002
