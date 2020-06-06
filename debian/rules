@@ -14,5 +14,5 @@ BINDIR=source/bin
 override_dh_auto_build:
 	for prg in vhostmanager.1;do xsltproc ${XSLOPT} -o ${MANDIR}/ ${XSL} ${MANDIR}/$$prg.xml;done
 	for prg in vhostquery;do pod2man ${BINDIR}/$$prg.pl ${MANDIR}/$$prg.1;done
-	for tgt in vhostenconf vhostdisconf vhostensite vhostdissite;do pod2man ${BINDIR}/vhostmanage.pl ${MANDIR}/$$tgt.1;done
+	for tgt in vhostenconf vhostdisconf vhostensite vhostdissite;do pod2man -n $$tgt ${BINDIR}/vhostmanage.pl ${MANDIR}/$$tgt.1;done
 	dh_auto_build
