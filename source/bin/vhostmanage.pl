@@ -1,7 +1,6 @@
 #!/usr/bin/perl -w
 #
-# vhostmanage by Uwe Gehring <adspectus@fastmail.com> is based upon
-#
+# vhostmanage by Uwe Gehring <adspectus@fastmail.com> is based upon:
 # a2enmod by Stefan Fritsch <sf@debian.org>
 # Licensed under Apache License 2.0
 #
@@ -13,6 +12,12 @@ use File::Basename;
 use File::Path;
 use 5.014;
 no if $] >= 5.017011, warnings => 'experimental::smartmatch';
+
+=head1 NAME
+
+vhostquery - retrieve user specific runtime configuration from a local Apache 2 HTTP server
+
+=cut
 
 
 my $basename       = basename($0);
@@ -26,7 +31,7 @@ my $reload         = 'reload';
 my $request_reload = 0;
 my $rc             = 0;
 my $dir            = $obj;
-$dir = 'sites' if ($obj eq 'site')
+$dir = 'sites' if ($obj eq 'site');
 my $availdir       = "$confdir/$dir-available";
 my $enabldir       = "$confdir/$dir-enabled";
 my $choicedir      = $act eq 'enable' ? $availdir : $enabldir;
