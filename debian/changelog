@@ -1,5 +1,21 @@
-vhostmanager (1.0.0) UNRELEASED; urgency=medium
+vhostmanager (1.1.0) unstable; urgency=medium
+
+  * 9954861 Streamlined and finalized documentation
+
+ -- Uwe Gehring <adspectus@fastmail.com>  Sat, 06 Jun 2020 18:07:02 +0200
+
+vhostmanager (1.0.6) unstable; urgency=medium
 
   * Initial Release.
+  * c44b30f Initial versions of manpages
+  * 55837c4 Change: Also works for conf
+  * 45aad92 Added vhostquery
+  * a70f849 Changed manpage creation to pod2man
+  * af62107 Added POD
+  * 0a14eef Added envvars.local
+  * 953e887 Be prepared for a user defined apache2 dir
+  * de21b2c Added opening of vhosts dir in Homedirs
+  * 7b5fc44 Added instructions how to use
+  * 9f28e10 Bugfix: location of example and variables setting
 
- -- Uwe Gehring <adspectus@fastmail.com>  Tue, 19 May 2020 08:56:19 +0200
+ -- Uwe Gehring <adspectus@fastmail.com>  Sat, 06 Jun 2020 18:03:30 +0200
