@@ -184,21 +184,20 @@ sub query_state {
   my $pattern = shift;
   my $listref = shift;
 
-  $pattern =~ s/\.conf//;
   my @candidates;
 
-  if ($pattern) { @candidates = grep { $_ eq $pattern } @{ $listref } }
-  else { @candidates = @{ $listref } }
-
-  my $matches = 0;
-  foreach my $module (@candidates) {
-    output("$module\n");
-    $matches++;
+  if ($pattern) {
+    $pattern =~ s/\.conf//;
+    @candidates = grep { $_ eq $pattern } @{ $listref }
+  }
+  else {
+    @candidates = @{ $listref };
   }
 
-  if (!$matches) {
-    my $reason = "No $type matches $pattern";
-    my $retval = $E_NOTFOUND;
-    fail($reason, $retval);
+  if (scalar(@candidates)) {
+    output("$_\n") foreach (@candidates);
+  }
+  else {
+    fail("No $type matches $pattern",$E_NOTFOUND);
   }
 }
