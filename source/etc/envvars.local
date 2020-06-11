@@ -11,4 +11,4 @@
 ## or put the proposed settings in /etc/apache2/envvars directly.
 
 # Use this if you want apache2 to create files and directories with group write permission
-umask=002
+#umask=002
