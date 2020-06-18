@@ -105,15 +105,15 @@
         </listitem>
       </varlistentry>
       <varlistentry>
-        <term><filename>/usr/share/doc/vhostmanager/examples/envvars</filename></term>
+        <term><filename>/usr/share/doc/vhostmanager/examples/envvars.local</filename></term>
         <listitem>
-          <para>An example configuration file to define some usefule apache2 settings.</para>
+          <para>An example configuration file to define some useful apache2 environment variables and settings.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
         <term><filename>/usr/share/doc/vhostmanager/examples/vhostmanager.conf</filename></term>
         <listitem>
-          <para>An example configuration file to define some useful apache2 environment variables.</para>
+          <para>An example configuration file to define some useful apache2 environment variables and settings.</para>
         </listitem>
       </varlistentry>
     </variablelist>
