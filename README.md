@@ -12,6 +12,7 @@ The __vhostmanager__ package is a collection of configuration files and scripts 
 
 * [Getting Started](#getting-started)
 * [Usage](#usage)
+* [User specific virtual hosts directory](#user-specific-virtual-hosts-directory)
 * [License](#license)
 * [Acknowledgements](#acknowledgements)
 
