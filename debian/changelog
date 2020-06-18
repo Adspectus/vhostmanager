@@ -1,3 +1,10 @@
+vhostmanager (1.1.9) unstable; urgency=medium
+
+  * bf201dd Fixed typo and docu about umask
+  * 849dad1 Updated README
+
+ -- Uwe Gehring <adspectus@fastmail.com>  Thu, 18 Jun 2020 09:17:36 +0200
+
 vhostmanager (1.1.8) unstable; urgency=medium
 
   * 51242b5 Initial version of background info
